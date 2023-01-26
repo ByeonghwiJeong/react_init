@@ -29,7 +29,7 @@ function App() {
       </button>
       {글제목.map(function (a, i) {
         return (
-          <div className="list">
+          <div className="list" key={i}>
             <h4
               onClick={() => {
                 setModal(true);
@@ -47,6 +47,14 @@ function App() {
               {따봉[i]}
             </h4>
             <p>2월 17일 발행</p>
+            <button
+              onClick={() => {
+                let copy = [...글제목];
+                copy.splice(i, 1);
+                글제목변경(copy);
+              }}>
+              삭제
+            </button>
           </div>
         );
       })}
@@ -57,6 +65,15 @@ function App() {
           console.log(입력값);
         }}
       />
+
+      <button
+        onClick={() => {
+          let copy = [...글제목];
+          copy.unshift(입력값);
+          글제목변경(copy);
+        }}>
+        글발행
+      </button>
 
       {modal === true ? (
         <Modal title={title} 글제목변경={글제목변경} 글제목={글제목}></Modal>
