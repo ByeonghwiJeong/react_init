@@ -78,15 +78,17 @@ function App() {
           </div>
         );
       })}
-      {modal === true ? <Modal></Modal> : null}
+      {modal === true ? (
+        <Modal color={"skyblue"} 글제목={글제목}></Modal>
+      ) : null}
     </div>
   );
 }
 
-function Modal() {
+function Modal(props) {
   return (
-    <div className="modal">
-      <h4>제목</h4>
+    <div className="modal" style={{ background: props.color }}>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
     </div>
